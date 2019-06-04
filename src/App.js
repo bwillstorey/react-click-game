@@ -30,7 +30,7 @@ class App extends React.Component {
 
   // when page loads shuffle through the musician cards
   componentDidMount() {
-    const newMusicians = this.shuffleArr(this.state.Musicians);
+    const newMusicians = this.shuffleCards(this.state.Musicians);
     this.setState({
         Musicians: newMusicians
     });
@@ -41,7 +41,7 @@ class App extends React.Component {
       <Header />,
 
       <main>
-          <Card pokemons={this.state.Musicians} />
+          <Card musicians={this.state.Musicians} />
       </main>
     ];
   }
