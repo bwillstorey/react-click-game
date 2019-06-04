@@ -1,0 +1,63 @@
+[
+    {
+        "id": 0,
+        "name": "elvis",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-134993-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 1,
+        "name": "led zeppelin",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135004-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 2,
+        "name": "otis redding",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135011-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 3,
+        "name": "the ramones",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135016-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 4,
+        "name": "prince",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135018-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 5,
+        "name": "nirvana",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135017-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 6,
+        "name": "david bowie",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135029-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 7,
+        "name": "jay z",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135862-fceac954592432f78a43e5c831f929d390420b61.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 8,
+        "name": "marvin gaye",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135008-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 9,
+        "name": "dr dre",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135044-square.jpg?crop=1240:1240&width=385"
+    },
+
+    {
+        "id": 10,
+        "name": "radiohead",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135061-square.jpg?crop=1240:1240&width=385"
+    },
+    {
+        "id": 11,
+        "name": "beastie boys",
+        "img": "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-135065-square.jpg?crop=1240:1240&width=385"
+    }
+]

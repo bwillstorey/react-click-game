@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
+import Header from "./components/Header";
+import Card from "./components/Card";
 import './css/App.css';
+import Musicians from "./musicians.json"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    Musicians: Musicians,
+    Score: 0,
+    TopScore: 0
+  };
+
+  // suffle cards after every selection
+  shuffleCards = arr => {
+    let newPosition, temp;
+    for (let i = arr.length - 1; i > 0; i--) {
+        newPosition = Math.floor(Math.random() * (i + 1));
+        temp = arr[i];
+        arr[i] = arr[newPosition];
+        arr[newPosition] = temp;
+    }
+    return arr;
+  };
+
+  handleClick = (event, id) => {
+    event.preventDefault();
+    console.log(id);
+  };
+
+  // when page loads shuffle through the musician cards
+  componentDidMount() {
+    const newMusicians = this.shuffleArr(this.state.Musicians);
+    this.setState({
+        Musicians: newMusicians
+    });
+  };
+
+  render() {
+    return [
+      <Header />,
+
+      <main>
+          <Card pokemons={this.state.Musicians} />
+      </main>
+    ];
+  }
 }
 
 
