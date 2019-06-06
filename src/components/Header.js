@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Header = () => (
+const Header = (props) => (
     <header>
-        <nav className="navbar purple darken-3 text-success sticky-top">
+        <nav className="navbar navbar-dark bg-dark sticky-top">
             <ul className="container text-center">
-                <li className="nav-link">Musician Memory Game</li>
-                <li className="nav-link">Click an Image to begin</li>
-                <li className="nav-link">Score: 0 | Top Score: 0</li>
+                <li className="nav-link"><h3>Musician Memory Game</h3></li>
+                <li className="nav-link"><h4> { props.message } </h4></li>
+                <li className="nav-link"><h3>Score: { props.score } | Top Score: { props.topScore }</h3></li>
             </ul>
         </nav>
         

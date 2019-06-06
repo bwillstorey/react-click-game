@@ -7,8 +7,12 @@ import Musicians from "./musicians.json"
 class App extends React.Component {
   state = {
     Musicians: Musicians,
-    Score: 0,
-    TopScore: 0
+    previewsClick: "",
+    score: 0,
+    topScore: 0,
+    isPlaying: false,
+    sameImageClicked: false,
+    message: "Click on a musician to start"
   };
 
   // suffle cards after every selection
@@ -23,10 +27,57 @@ class App extends React.Component {
     return arr;
   };
 
-  handleClick = (event, id) => {
+  handleClick = event => {
     event.preventDefault();
-    console.log(id);
-  };
+    // set the state of the game to playing
+    this.setState({
+        isPlaying: true,
+        message: "Playing Game"
+    });
+    // destructuring the event object from the alt attribute in the image click
+    const { alt } = event.target;
+    // store current click
+    const currentClick = alt;
+
+    // handle game logic conditions
+
+    // if user clicks on a card that hasn't been clicked then add a point to the current score
+    if (currentClick !== this.state.previewsClick) {
+        const musiciansArr = this.shuffleCards(this.state.Musicians);
+        this.setState({
+            Musicians: musiciansArr,
+            previewsClick: currentClick,
+            score: this.state.score + 1,
+            sameImageClicked: false
+        });
+    }
+    // now when the user clicks on a card that has been selected on the previews round then add the current score to the top score if its greater than the previews top score and reset the current score
+    else {
+        // saving current score on a variable
+        const saveScore = this.state.score;
+        const musiciansArr = this.shuffleCards(this.state.Musicians);
+
+        // if current score is greater than top score, store that current score to top score
+        if (saveScore > this.state.topScore) {
+            this.setState({
+                Musicians: musiciansArr,
+                previewsClick: currentClick,
+                score: 0,
+                topScore: saveScore,
+                sameImageClicked: true,
+                message: "Game Over. Please try again."
+            });
+        }
+        // else just reset the current score and keep playing the game
+        this.setState({
+            Musicians: musiciansArr,
+            previewsClick: currentClick,
+            score: 0,
+            sameImageClicked: true,
+            message: "Game Over. Please try again."
+        });
+    }
+};
 
   // when page loads shuffle through the musician cards
   componentDidMount() {
@@ -38,27 +89,31 @@ class App extends React.Component {
 
   render() {
     return [
-      <Header />,
+        <Header
+            score={this.state.score}
+            topScore={this.state.topScore}
+            message={this.state.message}
+        />,
 
-      <main>
-          <Card musicians={this.state.Musicians} />
-      </main>
+        <main
+          id="game-img"
+          className={
+            this.state.sameImageClicked ? "container shake" : "container"
+          }
+        >
+          {this.state.Musicians.map((musician, index) => (
+            <Card
+              id={musician.id}
+              key={musician.id}
+              src={musician.img}
+              name={musician.name}
+              img={musician.img}
+              handleClick={this.handleClick}
+            />
+          ))}
+        </main>
     ];
   }
 }
-
-
-// REQUIREMENTS
-
-// The application should render different images (of your choice) to the screen. 
-  // Each image should listen for click events. - CLICK EVENT HANDLERS
-
-// The application should keep track of the user's score. - VARIABLE FOR SCORE, INCREMEMNTING WITH RIGHT ANSWER
-  // The user's score should be incremented when clicking an image for the first time. - 
-  // The user's score should be reset to 0 if they click the same image more than once. - CONDITIONAL (DETERMINE BEST ONE)
-
-// Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order. - MATH RANDOM FORMULA
-
-// Once the user's score is reset after an incorrect guess, the game should restart. - CONDITIONAL IF/ELSE OR SWITCH OR TERNINARY
 
 export default App;
